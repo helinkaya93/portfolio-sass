@@ -1,0 +1,212 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: $background-color;
+}
+a,
+a:visited,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
+#site-header {
+  padding: 0 $padding-x-md;
+  > nav {
+    padding: 24px 0;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+.logo-link {
+  color: $primary-text-color;
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: 0.4s;
+
+  > i {
+    font-size: 2.5rem;
+    margin-right: 24px;
+  }
+  &:hover {
+    color: $brand-color;
+  }
+}
+.header-links {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 80px;
+  > li {
+    padding: 0 12px;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      color: $primary-text-color;
+      font-weight: bold;
+      overflow-y: hidden;
+      &:hover {
+        color: $brand-color;
+        > span {
+          transform: translateY(-100%);
+        }
+      }
+      > span {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        transform: translateY(0);
+        transition: transform 0.4s;
+        position: relative;
+        &::after {
+          content: attr(data-content);
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+main {
+  padding: 0 $padding-x-md;
+}
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 80vh;
+}
+.hero-content {
+  width: 58%;
+  height: 100%;
+  flex-grow: 1;
+  .hero-desc1 {
+    color: $primary-text-color;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+  h1 {
+    color: $primary-text-color;
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+  .hero-desc2 {
+    color: $secondary-text-color;
+  }
+  .button-wraper {
+    display: flex;
+    align-items: center;
+    margin: 24px 0;
+    > .btn {
+      margin-right: 12px;
+    }
+  }
+  .btn {
+    min-width: 170px;
+    padding: 8px 16px;
+    min-height: 40px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: 0.4s;
+    @include flex-center;
+  }
+  .btn.primary {
+    background-color: #eee;
+    color: #5b5b5b;
+    &:hover {
+      color: $brand-color;
+    }
+  }
+  .btn.secondery {
+    background-color: #5b5b5b;
+    color: $primary-text-color;
+    ¢:hover {
+      background-color: $brand-color;
+    }
+  }
+  .box-name {
+    position: relative;
+    height: 30px;
+    color: $brand-color;
+    > span {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: name-slidin 6s linear infinite 0s;
+
+      &:nth-of-type(2) {
+        animation-delay: 2s;
+      }
+      &:nth-of-type(3) {
+        animation-delay: 4s;
+      }
+    }
+  }
+}
+.hero-img {
+  width: 40%;
+  height: 100%;
+  flex-grow: 1;
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+@keyframes name-slidin {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  5% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  30% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
